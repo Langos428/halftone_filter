@@ -4,7 +4,7 @@ from math import sqrt
 SCALE = 5         # velkosť štvorčeka v gride, ovplyvňuje downscaling
 MULTIPLY = 4      # faktor, koľkokrát väčší bude výstup oproti vstupu
 
-filename = "lighthouse.jpg"
+filename = "mountain.jpg"
 
 original = Image.open(filename)
 original = original.convert("RGB")
