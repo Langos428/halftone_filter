@@ -2,11 +2,12 @@ from PIL import Image, ImageDraw, ImageOps
 from math import sqrt
 
 SCALE = 5         # velkosť štvorčeka v gride, ovplyvňuje downscaling
-MULTIPLY = 2      # faktor, koľkokrát väčší bude výstup oproti vstupu
+MULTIPLY = 4      # faktor, koľkokrát väčší bude výstup oproti vstupu
 
-filename = "grayscale-rose.jpg"
+filename = "lighthouse.jpg"
 
 original = Image.open(filename)
+original = original.convert("RGB")
 
 def getluminance(x: int, y: int, px) -> float:
     red, green, blue = px[x, y]
@@ -30,7 +31,7 @@ def halftonify(img: Image, scale, multiply, color1: str = "#FFFFFF", color2: str
             lum = getluminance(x, y, px)
             side = scale*factor     # strana štvorca jedného pixelu
 
-            radius = side*sqrt(2)*(1-lum)*0.5
+            radius = side*0.5*sqrt(2)*(1-lum)
             pos_x = (x+0.5)*side
             pos_y = (y+0.5)*side
 
